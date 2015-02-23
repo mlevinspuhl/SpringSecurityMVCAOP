@@ -17,7 +17,8 @@ import org.springframework.web.servlet.view.JstlView;
 @Configuration
 @ComponentScan({ "br.com.teste.spring.security.controller",
 		"br.com.teste.spring.security.rest",
-		"br.com.teste.spring.security.aspect"})
+		"br.com.teste.spring.security.aspect",
+		"br.com.teste.spring.security.business"})
 @Import({ SecurityConfig.class })
 @PropertySource({ "classpath:cred.properties"})
 public class AppConfig {
