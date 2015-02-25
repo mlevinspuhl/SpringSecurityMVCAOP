@@ -38,6 +38,7 @@
 <body onload='document.loginForm.username.focus();'>
 
 	<h1>Spring Security Login Form (Database Authentication)</h1>
+	<h1>Token = ${_csrf.token}</h1>
 
 	<div id="login-box">
 

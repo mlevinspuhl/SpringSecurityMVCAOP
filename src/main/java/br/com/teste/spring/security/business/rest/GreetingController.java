@@ -1,4 +1,4 @@
-package br.com.teste.spring.security.rest;
+package br.com.teste.spring.security.business.rest;
 
 
 import java.util.concurrent.atomic.AtomicLong;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.teste.spring.security.business.manager.RestManager;
 import br.com.teste.spring.security.common.domain.Pet;
 import br.com.teste.spring.security.common.exception.CommonException;
-
+@RequestMapping("/rest/v1.0")
 @RestController
 public class GreetingController {
 	
@@ -28,15 +28,14 @@ public class GreetingController {
 
     private final AtomicLong counter = new AtomicLong();
 
-    @RequestMapping("${greeting}")
+    @RequestMapping(value = "${greeting}", method = RequestMethod.GET, produces=MediaType.TEXT_PLAIN_VALUE)
     public String greeting(@RequestParam(value="name", defaultValue="World") String name) {
     	counter.incrementAndGet();
-        return "Hello! "+counter+" - " +username;
+        return "Hello! "+name+counter+" - " +username;
     }
     @RequestMapping(value = "/pets/{idPet}", method = RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public Pet getPet(@PathVariable Integer idPet) throws CommonException {
-    	
     	
         return manager.getPet(idPet);
     }

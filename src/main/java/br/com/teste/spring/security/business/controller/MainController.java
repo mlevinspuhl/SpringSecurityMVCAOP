@@ -1,4 +1,4 @@
-package br.com.teste.spring.security.controller;
+package br.com.teste.spring.security.business.controller;
 
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -19,18 +19,25 @@ public class MainController {
 		ModelAndView model = new ModelAndView();
 		model.addObject("title", "Spring Security Login Form - Database Authentication");
 		model.addObject("message", "This is default page!");
-		model.setViewName("hello");
+		model.setViewName("WEB-INF/pages/hello.jsp");
 		return model;
 
 	}
+	@RequestMapping(value = { "/doc" }, method = RequestMethod.GET)
+	public ModelAndView docPage() {
 
+		ModelAndView model = new ModelAndView();
+		model.setViewName("docs/index.html");
+		return model;
+
+	}
 	@RequestMapping(value = "/admin**", method = RequestMethod.GET)
 	public ModelAndView adminPage() {
 
 		ModelAndView model = new ModelAndView();
 		model.addObject("title", "Spring Security Login Form - Database Authentication");
 		model.addObject("message", "This page is for ROLE_ADMIN only!");
-		model.setViewName("admin");
+		model.setViewName("WEB-INF/pages/admin.jsp");
 
 		return model;
 
@@ -48,7 +55,7 @@ public class MainController {
 		if (logout != null) {
 			model.addObject("msg", "You've been logged out successfully.");
 		}
-		model.setViewName("login");
+		model.setViewName("WEB-INF/pages/login.jsp");
 
 		return model;
 
@@ -70,7 +77,7 @@ public class MainController {
 			
 		}
 		
-		model.setViewName("403");
+		model.setViewName("WEB-INF/pages/403.jsp");
 		return model;
 
 	}
